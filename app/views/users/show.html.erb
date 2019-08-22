@@ -1,0 +1,12 @@
+<% flash.each do |key, value| %>
+     <%= content_tag(:div, value, class: "#{key}") %>
+ <% end %>
+
+<%= render 'books/list', book: @new_book, user: @user %>
+
+<h1>User</h1>
+
+<% @books.each do |book| %>
+	 <%= book.title %>
+	 <%= book.body %>
+<% end %>

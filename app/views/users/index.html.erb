@@ -1,0 +1,12 @@
+<%= render 'books/list', book: @new_book, user: current_user %>
+
+<h1>Users</h1>
+<p>image</p>
+<p>name</p>
+<% @users.each do |user| %>
+	<div><%= user.name %></div>
+	<div>
+     <%=link_to 'show', "/users/#{user.id}" %>
+    </div>
+     <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg'  %>
+<% end %>

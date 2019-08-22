@@ -1,0 +1,18 @@
+<%= render 'books/list', book: @new_book, user: current_user %>
+<h1>Books</h1>
+<p>Title</p>
+<p>Opinion</p>
+<table>
+  <tr>
+<% @books.each do |book| %>
+	<th><%= attachment_image_tag book.user, :profile_image, :fill, 100, 100, format: 'jpeg' , fallback: "no-image.jpg"  %></th>
+	<div>
+		<th><%= link_to book.title , book_path(book.id) %></th>
+
+	</div>
+	<div>
+		<th><%= book.body %></th>
+	</div>
+  </tr>
+<% end %>
+</table>

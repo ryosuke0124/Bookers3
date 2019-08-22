@@ -1,0 +1,15 @@
+<%= render 'books/list', book: @new_book, user: @book.user %>
+
+<table class="table table-striped">
+ <h1>Book detail</h1>
+    <div><%= @book %></div>
+	<div>
+	 <%= @book.title %>
+	</div>
+	<div>
+	 <%= @book.body %>
+	</div>>
+</table>
+
+<%= link_to "Edit", edit_book_path(@book.id) %>
+<%= link_to "Destroy", book_path, method: :delete %>
