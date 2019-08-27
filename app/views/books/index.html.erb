@@ -14,17 +14,20 @@
     </div>
 <% end %>
 
-<div class="container">
- <div class="row">
-  <table class="table table-striped">
-   <thead>
-    <tr>
+
+
+  
+    
      <div class="col-xs-3">
   	  <%= render 'books/list', book: @new_book, user: current_user %>
+  	</div>
+  	<table class="table table-striped">
+   <thead>
+   	<tr>
      <th><h1>Books</h1></th>
      <th><p>Title</p></th>
      <th><p>Opinion</p></th>
-   </table>
+   </tr>
 </table>
 </div>
 </div>
