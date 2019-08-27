@@ -13,26 +13,46 @@
     <!-- ここからheaderコード書く -->
     <header class="navbar navbar-fixed-top navbar-inverse">
      <div class="container">
-      <nav class='nav navbar-nav navbar-left' >
+      <nav class='nav navbar-nav navbar-right' >
        <span>Bookers</span>
       <nav>
        <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <%= link_to "Home", user_path(current_user) %>
-          <%= link_to "Users", users_path %>
-          <%= link_to "Books", books_path %>
-          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+           <li><%= link_to(user_path(current_user)) do %>
+             <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+             Home
+             <% end %>
+           </li>
+           <li><%= link_to(users_path) do %>
+             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+             Users
+             <% end %>
+           </li>
+           <li><%= link_to(books_path) do %>
+             <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+             Books
+             <% end %>
+           </li>
+           <li><%= link_to (destroy_user_session_path) ,method: :delete do %>
+             <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+             logout
+             <% end %>
+           </li>
         <% else %>
-          <%= link_to "Home", root_path %>
-          <%= link_to "About", home_about_path %>
-          <%= link_to "signup", new_user_registration_path %>
-          <%= link_to "login", user_session_path %>
+           <%= link_to "Home", root_path %>
+           <%= link_to "About", home_about_path %>
+           <%= link_to "signup", new_user_registration_path %>
+           <%= link_to "login", user_session_path %>
         <% end %>
        </ul>
       </nav>
      </div>
     </header>
+    <br><br><br>
    <%= yield %>
+   <footer>
+     <p>CopyRight Infratop.inc</p>
+   </footer>
   </body>
 </html>
 

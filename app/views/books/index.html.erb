@@ -1,12 +1,43 @@
-<%= render 'books/list', book: @new_book, user: current_user %>
-<h1>Books</h1>
-<p>Title</p>
-<p>Opinion</p>
-<table>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<% if @new_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @new_book.errors.count %>errors prohibited this obj from being saved:
+</h2>
+      <ul>
+      <% @new_book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<div class="container">
+ <div class="row">
+  <table class="table table-striped">
+   <thead>
+    <tr>
+     <div class="col-xs-3">
+  	  <%= render 'books/list', book: @new_book, user: current_user %>
+     <th><h1>Books</h1></th>
+     <th><p>Title</p></th>
+     <th><p>Opinion</p></th>
+   </table>
+</table>
+</div>
+</div>
   <tr>
+ <div class="col-xs-9">
 <% @books.each do |book| %>
-	<th><%= attachment_image_tag book.user, :profile_image, :fill, 100, 100, format: 'jpeg' , fallback: "no-image.jpg"  %></th>
-	<div>
+	<th>
+
+      	<%= link_to user_path(book.user.id) do %>
+      		<%= attachment_image_tag book.user, :profile_image, :fill, 100, 100, format: 'jpeg' , fallback: "no-image.jpg" %>
+	 	<% end %>
+
+	 </th>
 		<th><%= link_to book.title , book_path(book.id) %></th>
 
 	</div>
@@ -16,3 +47,6 @@
   </tr>
 <% end %>
 </table>
+</div>
+</div>
+</div>

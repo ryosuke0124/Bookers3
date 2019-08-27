@@ -1,12 +1,25 @@
-<%= render 'books/list', book: @new_book, user: current_user %>
-
-<h1>Users</h1>
-<p>image</p>
-<p>name</p>
-<% @users.each do |user| %>
-	<div><%= user.name %></div>
-	<div>
-     <%=link_to 'show', "/users/#{user.id}" %>
-    </div>
-     <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg'  %>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
 <% end %>
+<div class="container">
+ <div class="row">
+<table class="table table-striped">
+   <thead>
+    <tr>
+  <div class="col-xs-3">
+  	<%= render 'users/list', book: @new_book, user: current_user %>
+   <div class="col-xs-9">
+   <th><h1>Users</h1></th>
+   <th><p>image</p></th>
+   <th><p>name</p></th>
+ <% @users.each do |user| %>
+	<th><div><%= user.name %></div></th>
+	<th><div>
+     <%=link_to 'show', "/users/#{user.id}" %>
+    </div></th>
+     <th><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg'  %></th>
+<% end %>
+  </div>
+ </div>
+</div>
+</div>

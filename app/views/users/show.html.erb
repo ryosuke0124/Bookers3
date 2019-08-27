@@ -1,12 +1,34 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
 <% flash.each do |key, value| %>
      <%= content_tag(:div, value, class: "#{key}") %>
  <% end %>
 
-<%= render 'books/list', book: @new_book, user: @user %>
 
-<h1>User</h1>
+<div class="container">
+ <div class="row">
 
-<% @books.each do |book| %>
-	 <%= book.title %>
-	 <%= book.body %>
-<% end %>
+  <div class="col-xs-3">
+    <%= render 'users/list', book: @new_book, user: @user %>
+  </div>
+
+ <div class="col-xs-9">
+ 	<h1>Books</h1>
+  <% @books.each do |book| %>
+      <p>Title</p>
+      <p>Opinion</p>
+      <th>
+
+      	<%= link_to user_path(book.user.id) do %>
+      		<%= attachment_image_tag book.user, :profile_image, :fill, 100, 100, format: 'jpeg' , fallback: "no-image.jpg" %>
+	 	<% end %>
+
+	 </th>
+	 <th><%= link_to book.title , book_path(book.id) %></th>
+	 <th><%= book.body %></th>
+  <% end %>
+  </div>
+ </div>
+</div>

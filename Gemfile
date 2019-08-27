@@ -55,7 +55,7 @@ group :test do
   gem 'rspec-rails'
     gem "factory_bot_rails"
     gem 'rspec-parameterized'
-    gem 'faker'
+    gem 'faker', '~> 1.9.3'
     gem 'shoulda-matchers'
     gem 'rails-controller-testing'
   # Adds support for Capybara system testing and selenium driver
@@ -71,8 +71,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #original
 gem 'devise'
 
-# gem 'bootstrap-sass', '~> 3.3.6'
-# gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
 
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
